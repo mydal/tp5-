@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__PUBLIC__/style/bootstrap.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/font-awesome.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__PUBLIC__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/style/demo.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/typicons.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+</head>
+<body>
+{include file="common/top"/}
+
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="common/left"/}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{:url('index/index')}">首页</a>
+                    </li>
+                    <li>
+                        <a href="{:url('article/lists')}">物资管理</a>
+                    </li>
+                    <li class="active">更新物资</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">更新物资</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+                                    <form class="form-horizontal" role="form" action="{:url('article/edit')}" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="username"
+                                                   class="col-sm-2 control-label no-padding-right">物资名称</label>
+                                            <div class="col-sm-6">
+                                                <input type="hidden" name="id" value="{$model.id}">
+                                                <input class="form-control" id="username" placeholder="" name="name"
+                                                       required="" type="text" value="{$model.name}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">物资价值</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="price" placeholder="" name="price"
+                                                       required="" type="text" value="{$model.price}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">物资数量</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="num" placeholder="" name="num"
+                                                       required="" type="text" value="{$model.num}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">物资分类</label>
+                                            <div class="col-sm-6">
+                                                <select name="cate_id" id="">
+                                                    <option value="">---请选择</option>
+                                                    {foreach $models as $value}
+                                                    <option value="{$value.id}" {if condition="$model.cate_id eq $value.id"} selected {/if}>{$value.catename}</option>
+                                                    {/foreach}
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">物资缩略图</label>
+                                            <div class="col-sm-6">
+                                                <input type="file" name="pic">
+                                                <img src="{$model.pic}" alt="" height="60px;">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">物资捐赠方</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="address" placeholder="" name="address"
+                                                       required="" type="text" value="{$model.address}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">物质状态</label>
+                                            <div class="col-sm-6">
+                                                <select name="status" id="" class="form-control">
+                                                    <option value="" selected>请选择</option>
+                                                    <option value="0" {if condition="$model.status eq '已投入使用'"} selected {/if}>已投入使用</option>
+                                                    <option value="1" {if condition="$model.status eq '未投入使用'"} selected {/if}>未投入使用</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">物资捐赠简介</label>
+                                            <div class="col-sm-6">
+                                                <textarea name="desc" id="desc" cols="105" rows="10">{$model.desc}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username"
+                                                   class="col-sm-2 control-label no-padding-right">捐赠详情</label>
+                                            <div style="margin-left: 220px;">
+                                                <textarea name="content" id="editor" >{$model.content}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default">更新物资信息</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__PUBLIC__/style/jquery_002.js"></script>
+<script src="__PUBLIC__/style/bootstrap.js"></script>
+<script src="__PUBLIC__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__PUBLIC__/style/beyond.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
+<script>
+    var editor = new Jodit('#editor', {
+        width:630,
+        height: 400
+    });
+    editor.setEditorValue();
+</script>
+
+
+</body>
+</html>

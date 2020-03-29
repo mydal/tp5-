@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__PUBLIC__/style/bootstrap.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/font-awesome.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__PUBLIC__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/style/demo.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/typicons.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+</head>
+<body>
+{include file="common/top"/}
+
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="common/left"/}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{:url('index/index')}">首页</a>
+                    </li>
+                    <li>
+                        <a href="{:url('news/lists')}">新闻管理</a>
+                    </li>
+                    <li class="active">添加新闻</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">新增新闻</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+                                    <form class="form-horizontal" role="form" action="add" method="post"  enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="username"
+                                                   class="col-sm-2 control-label no-padding-right">新闻名称</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="username" placeholder="" name="name"
+                                                       required="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">新闻缩略图</label>
+                                            <div class="col-sm-6">
+                                                <input type="file" name="pic">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">新闻状态</label>
+                                            <div class="col-sm-6">
+                                                <select name="status" id="" class="form-control">
+                                                    <option value="" selected>请选择</option>
+                                                    <option value="0" >已发布</option>
+                                                    <option value="1" >未发布</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">新闻分类</label>
+                                            <div class="col-sm-6">
+                                                <select name="tag_id" id="">
+                                                    <option value="">---请选择</option>
+                                                    {foreach $m as $value}
+                                                    <option value="{$value.id}">{$value.tagname}</option>
+                                                    {/foreach}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">新闻作者</label>
+                                            <div class="col-sm-6">
+                                                <select name="author_id" id="">
+                                                    <option value="">---请选择</option>
+                                                    {foreach $models as $value}
+                                                    <option value="{$value.id}">{$value.name}</option>
+                                                    {/foreach}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group_id"
+                                                   class="col-sm-2 control-label no-padding-right">新闻简介</label>
+                                            <div class="col-sm-6">
+                                                <textarea name="desc" id="desc" cols="105" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username"
+                                                   class="col-sm-2 control-label no-padding-right">新闻详情</label>
+                                            <div style="margin-left: 220px;">
+                                                <!--<div id="editor"></div>-->
+                                                <textarea name="content" id="editor" ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default">添加新闻</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__PUBLIC__/style/jquery_002.js"></script>
+<script src="__PUBLIC__/style/bootstrap.js"></script>
+<script src="__PUBLIC__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__PUBLIC__/style/beyond.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
+<script>
+    var editor = new Jodit('#editor', {
+        width:630,
+        height: 400
+    });
+    editor.setEditorValue();
+</script>
+
+
+</body>
+</html>

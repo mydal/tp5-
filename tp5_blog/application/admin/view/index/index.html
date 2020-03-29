@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__PUBLIC__/style/bootstrap.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/font-awesome.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__PUBLIC__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/style/demo.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/typicons.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/animate.css" rel="stylesheet">
+    <style>
+        .page-body{
+            width: 100%;
+            height: 620px;
+            background: url("__PUBLIC__/images/2.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+        .wz{
+            font-size: 27px;
+            margin-top: 30px;
+        }
+
+    </style>
+
+</head>
+<body>
+<!-- 头部 -->
+{include file="common/top"/}
+
+
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="common/left"/}
+
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li class="active">控制面板</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+                <div style="text-align:center; line-height:1000%; font-size:24px;">
+                    <p class="wz">武汉援助协会后台管理系统</p><br>
+                    <p style="color:#aaa;"></p></div>
+            </div>
+
+
+        </div>
+        <!-- /Page Body -->
+    </div>
+    <!-- /Page Content -->
+</div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__PUBLIC__/style/jquery_002.js"></script>
+<script src="__PUBLIC__/style/bootstrap.js"></script>
+<script src="__PUBLIC__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__PUBLIC__/style/beyond.js"></script>
+
+
+
+</body></html>
